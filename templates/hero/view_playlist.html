@@ -1,0 +1,28 @@
+{% extends "hero/layout.html" %} {%block content%}
+
+<div class="song-info">
+  <h1>{{data[0][1]}}</h1>
+  {% set link = "/dash/edit-playlist/" ~ data[0][0] %}
+  {% set link2  = "/dash/delete-playlist/" ~ data[0][0] %}
+    <a class="btn btn-warning" href={{link}} >Edit</a>
+    <a class="btn btn-warning" href={{link2}} >Delete</a>
+
+{%include "partials/songs_list.html" %}
+</div>
+
+<style>
+  .song-info {
+    color: var(--textColor);
+  }
+
+  .song-info h1 {
+    margin-bottom: var(--mediumPadding);
+  }
+
+  .song-info pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-top: 20px;
+  }
+</style>
+{%endblock%}

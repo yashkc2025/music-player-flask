@@ -1,0 +1,27 @@
+{% extends "hero/layout.html" %} {%block content%}
+
+<div class="song-info">
+  <h1>{{data[0][0]}}</h1>
+  <p>by <b>{{data[0][1]}}</b> from <b>{{data[0][2]}}</b></p>
+
+  <div class="song-lyrics">
+    <pre>{{data[0][3]}}</pre>
+  </div>
+</div>
+
+<style>
+  .song-info {
+    color: var(--textColor);
+  }
+
+  .song-info h1 {
+    margin-bottom: var(--mediumPadding);
+  }
+
+  .song-info pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-top: 20px;
+  }
+</style>
+{%endblock%}

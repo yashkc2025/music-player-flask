@@ -1,0 +1,103 @@
+{%if datas%}
+<table class="music-table">
+  <thead>
+    <th>Listen</th>
+    <th>Name</th>
+    <th>Artist</th>
+    <th>Lyrics</th>
+    <th>Rating</th>
+    <th>Rate</th>
+  </thead>
+  <tbody>
+    {% for row in datas %}
+    <tr>
+      <td>
+        <button type="button" title="play" onclick="play_song('{{row[8]}}')">
+          <img src="/static/icons/play.svg" alt="" />
+        </button>
+      </td>
+      <td>{{row[1]}}</td>
+      <td>{{row[3]}}</td>
+      <td>
+        <a class="btn bg-warning" href={{url_for('song_info',songID=row[0])}} alt="lyrics" title="lyrics">
+          <img src="/static/icons/book-open.svg" alt="" />
+        </a>
+      </td>
+      <td>
+        {% if row[6] == 0 and row[5] ==0 %} 0 {% else %}
+        {{row[5]/(row[5]+row[6])*100|round(2)}} {% endif %}
+      </td>
+      <td>
+        <button title="upvote" type="button" onclick="upvote('{{row[0]}}')">
+          <img src="/static/icons/thumbs-up.svg" alt="" />
+        </button>
+        <button
+          title="downvote"
+          type="button"
+          onclick="downvote('{{row[0]}}')"
+        >
+          <img src="/static/icons/thumbs-down.svg" alt="" />
+        </button>
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{%else%}
+<h3>No songs found</h3>
+{%endif%}
+
+<script>
+  function play_song(song_id) {
+    player.src = "/static/music/" + song_id ;
+    player.play();
+    playBtn.style.display = "none";
+    pauseBtn.style.display = "block";
+    get_song_name_js(song_id);
+  }
+
+  function get_song_name_js(song_id) {
+    fetch(`/get_song_name/${song_id}`, {
+      method: "POST",
+      body: JSON.stringify({
+        song_id: song_id,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        currSong.innerHTML = data.name;
+      });
+  }
+
+  function upvote(song_id) {
+    fetch(`/api/upvote/${song_id}`, {
+      method: "POST",
+      body: JSON.stringify({
+        song_id: song_id,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  }
+
+  function downvote(song_id) {
+    fetch(`/api/downvote/${song_id}`, {
+      method: "POST",
+      body: JSON.stringify({
+        song_id: song_id,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  }
+</script>

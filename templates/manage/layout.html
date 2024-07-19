@@ -1,0 +1,29 @@
+{% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/manage.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/global.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/comps.css') }}"
+/>
+{% endblock head %} {% block body %}
+<div class="manage-layout">
+  {% include "partials/manage_navbar.html" %} {% block content %} {% endblock
+  content %}
+</div>
+
+
+<style>
+  .manage-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+</style>
+
+{% endblock body %}

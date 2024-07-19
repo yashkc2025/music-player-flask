@@ -1,0 +1,22 @@
+{% extends 'manage/layout.html' %}
+{% from "includes/form.html" import formComp %}
+
+{% block content %}
+<div class="edit-song-form">
+  {%set link = "/manage/edit-album/" ~ datas[0][0] %}
+    {% call formComp(link, "POST", "Edit Album") -%}
+        <div class='formGroup'>
+          <label>Name</label>
+          <input type='text' name='albumName' required class='form-control' value='{{datas[0][1]}}'>
+        </div>
+        <div class='formGroup'>
+          <label>Artist</label>
+          <input type='text' name='artistName' required class='form-control' value='{{datas[0][2]}}'>
+        </div>
+        <div class='formGroup'>
+          <label>Genre</label>
+          <input type='text' name='genre' required class='form-control' value='{{datas[0][3]}}'>
+        </div>
+        {% endcall %}
+</div>
+{% endblock %}

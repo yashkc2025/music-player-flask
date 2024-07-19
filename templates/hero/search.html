@@ -1,0 +1,9 @@
+{% extends "hero/layout.html" %} {%block content %}
+<form action="/search" method="POST">
+  <input type="text" name="search" class="w-full" placeholder="Search"/>
+</form>
+<h3>Songs</h3>
+{% include "partials/songs_list.html"%}
+<h3>Albums</h3>
+{% with datas=album_data%} {% include "partials/albums_list.html"%} {% endwith
+%} {%endblock%}

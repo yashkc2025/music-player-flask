@@ -1,0 +1,24 @@
+{%extends "manage/layout.html" %} 
+
+{% from "includes/form.html" import formComp
+with context %} {%block content %}
+
+<div class="formDiv">
+    {%set link = "/dash/edit-playlist/" ~ data[0][0] %}
+    {% call formComp(link, "POST", "Edit Playlist") -%}
+        <div class='formGroup'>
+          <label>Playlist Name</label>
+          <input type='text' name='playlistName' required class='form-control' value={{data[0][1]}}>
+        </div>
+        <div class="formGroup">
+            <label for="songs">Songs</label>
+            <select name="songs" multiple>
+                {% for row in songs %}
+                <option value="{{row[0]}}">{{row[1]}}</option>
+                {%endfor%}
+            </select>
+        </div>
+    {% endcall %}
+</div>
+
+{%endblock content %}

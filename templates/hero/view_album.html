@@ -1,0 +1,11 @@
+{% extends 'hero/layout.html' %}
+
+{% block content %}
+<div class="album-info">
+    <h1>{{albumData[0][0]}}</h1>
+    <p>by <b>{{albumData[0][0]}}</b></p>
+    <p>Genre: <b>{{albumData[0][0]}}</b></p>
+</div>
+
+{% include "partials/songs_list.html" %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "hero/layout.html" %} {%block content %}
+<a class="btn bg-warning w-min ml-0-5 text-black" href="/manage/add-playlist">Add Playlist</a>
+{%if datas%}
+
+<table class="music-table">
+  <thead>
+    <th>View</th>
+    <th>Name</th>
+  </thead>
+  <tbody>
+    {% for row in datas %}
+    <tr>
+      <td>
+        <a href={{url_for('playlist_info',playID=row[0])}} class="btn" alt="lyrics" title="lyrics">
+          <img src="/static/icons/book-open.svg" alt="" />
+        </a>
+      </td>
+      <td>{{row[1]}}</td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+{%else%}
+<h3>No playlists found</h3>
+{%endif%} {%endblock content%}

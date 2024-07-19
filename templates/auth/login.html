@@ -1,0 +1,16 @@
+{%extends "auth/layout.html" %} {% from "includes/form.html" import formComp
+with context %} {%block content %}
+<div class="formDiv">
+  {% call formComp("/auth/login", "POST", "Login") -%}
+  <div class="formGroup">
+    <label for="userEmail">Email</label>
+    <input required name="userEmail" type="email" />
+  </div>
+  <div class="formGroup">
+    <label for="userPassword">Password</label>
+    <input name="userPassword" type="password" required />
+  </div>
+  {% endcall %}
+</div>
+
+{%endblock content %}

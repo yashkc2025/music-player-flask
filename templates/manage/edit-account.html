@@ -1,0 +1,24 @@
+{% extends 'manage/layout.html' %}
+{% from "includes/form.html" import formComp %}
+
+{% block content %}
+<div class="edit-song-form">
+    {% call formComp("/edit-account", "POST", "Edit Account") -%}
+        <div class='formGroup'>
+          <label>Name</label>
+          <input type='text' name='userName' required class='form-control' value='{{data[4]}}'>
+        </div>
+        <div class='formGroup'>
+          <label>Email</label>
+        <input type='email' name='userEmail' required class='form-control' value='{{data[1]}}'>
+        </div>
+        <div class='formGroup'>
+          <label>Password</label>
+          <input type='password' name='userPassword' required class='form-control' >
+        </div>
+        <div class='formGroup'>
+          <label>New Password</label>
+            <input type='password' name='userNewPassword' class='form-control' >
+        {% endcall %}
+</div>
+{% endblock %}

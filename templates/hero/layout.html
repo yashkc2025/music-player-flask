@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/hero.css') }}"
+/>
+{% endblock head %} {% block body %}
+<div class="hero-layout">
+  {%include "partials/topbar.html"%} {% block content %} {% endblock content %}
+</div>
+
+{% include 'partials/audio-player.html' %}
+
+
+<style>
+  .hero-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+</style>
+
+{% endblock body %}

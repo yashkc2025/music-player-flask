@@ -1,0 +1,22 @@
+{%extends "manage/layout.html" %} 
+
+{% from "includes/form.html" import formComp
+with context %} {%block content %}
+
+<div class="formDiv">
+    {% call formComp("/manage/add-playlist", "POST", "Add Playlist") -%}
+        <div class='formGroup'>
+          <label>Playlist Name</label>
+          <input type='text' name='playlistName' required class='form-control'>
+        </div>
+        <div class="formGroup">
+            <select name="songs" multiple>
+                {% for row in songs %}
+                <option value="{{row[0]}}">{{row[1]}}</option>
+                {%endfor%}
+            </select>
+        </div>
+    {% endcall %}
+</div>
+
+{%endblock content %}

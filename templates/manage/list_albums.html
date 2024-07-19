@@ -1,0 +1,31 @@
+{%extends "manage/layout.html" %} {% block content %}
+<a class="btn bg-warning w-min m-1 " href="/manage/add-album">Add an album</a>
+<table class="edit-table">
+  <thead>
+    <th>Name</th>
+    <th>Artist</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </thead>
+  <tbody>
+    {% for row in datas %}
+    <tr>
+      <td>{{row[1]}}</td>
+      <td>{{row[2]}}</td>
+      <td>
+        {%set link = "/manage/edit-album/" ~ row[0] %}
+        <a href= {{link}} class="btn btn-light">
+          <img src="/static/icons/edit-3.svg" alt="" />
+        </a>
+      </td>
+      <td>
+        {%set linkdel = "/manage/delete-album/" ~ row[0] %}
+        <a href= {{linkdel}} class="btn btn-light"
+          ><img src="/static/icons/x-circle.svg" alt="" />
+        </a>
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{% endblock content %}

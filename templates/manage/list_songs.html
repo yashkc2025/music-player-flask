@@ -1,0 +1,41 @@
+{%extends "manage/layout.html" %} 
+
+{% block content %} 
+
+<a class="btn bg-warning w-min m-1 " href="/manage/add-song">Add a song</a>
+<table class="edit-table">
+    <thead>
+      <th>Name</th>
+      <th>Artist</th>
+      <th>Album</th>
+      <th>Lyrics</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      {% for row in datas %}
+      <tr>
+        <td>{{row[1]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[9][:200]}}..</td>
+        <td>
+          {%set link = "/manage/edit-song/" ~ row[0] %}
+          <a href={{link}} class="btn btn-light"
+            >
+            <img src="/static/icons/edit-3.svg" alt="">
+            </a
+          >
+        </td>
+        <td>
+          {%set link2 = "/manage/delete-song/" ~ row[0] %}
+          <a href={{link2}} class="btn btn-light"
+            ><img src="/static/icons/x-circle.svg" alt="">
+          </a>
+        </td>
+
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+{% endblock content%}

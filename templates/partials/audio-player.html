@@ -1,0 +1,103 @@
+<section class="audio-player">
+    <div class="audio-info">
+      <b id="current-song">Play Something</b>
+    </div>
+    <div class="audio-progress">
+      <audio id="player" preload="auto">
+        <source src="/static/music/02956d74-239c-41e7-97c6-930b6a191b0b.mp3" type="">
+      </audio>
+      <input type="range" value="0" name="player-progress" id="player-progress">
+      <div class="audio-time">
+        <span id="current-time"></span>
+        <span>/</span>
+        <span id="total-time"></span>
+      </div>
+    </div>
+    <div class="audio-options">
+      <button id="pause-button"  type="button" title="pause" ><img src="/static/icons/pause.svg" alt="" /></button>
+      <button id="play-button"  type="button" title="play" ><img src="/static/icons/play.svg" alt="" /></button>
+      <button id="mute-button" type="button" title="mute"><img src="/static/icons/volume-2.svg" alt="" /></button>
+      <button id="unmute-button" type="button" title="unmute"><img src="/static/icons/volume-x.svg" alt="" /></button>
+    </div>
+</section>
+
+<script>
+    // buttons
+    const playBtn = document.getElementById('play-button');
+    const pauseBtn = document.getElementById('pause-button');
+    const player = document.getElementById('player');
+    const muteBtn = document.getElementById('mute-button');
+    const unmuteBtn = document.getElementById('unmute-button');
+    const playerProgress = document.getElementById('player-progress');
+    const currSong = document.getElementById('current-song');
+
+    // hide play and unmute button by default
+    pauseBtn.style.display = 'none';
+    unmuteBtn.style.display = 'none';
+
+    // play button
+    playBtn.addEventListener('click', () => {
+        player.play();
+        playBtn.style.display = 'none';
+        pauseBtn.style.display = 'block';
+    });
+
+    // pause button
+    pauseBtn.addEventListener('click', () => {
+        player.pause();
+        pauseBtn.style.display = 'none';
+        playBtn.style.display = 'block';
+    });
+
+
+
+    // mute button
+    muteBtn.addEventListener('click', () => {
+        player.muted = true;
+        muteBtn.style.display = 'none';
+        unmuteBtn.style.display = 'block';
+    });
+
+    // unmute button
+    unmuteBtn.addEventListener('click', () => {
+        player.muted = false;
+        unmuteBtn.style.display = 'none';
+        muteBtn.style.display = 'block';
+    });
+    
+
+    // progress bar
+    player.addEventListener('timeupdate', () => {
+        playerProgress.value = player.currentTime / player.duration * 100;
+    });
+
+    playerProgress.addEventListener('click', (e) => {
+        const progressWidth = playerProgress.clientWidth;
+        const clickedOffsetX = e.offsetX;
+        const duration = player.duration;
+
+        player.currentTime = clickedOffsetX / progressWidth * duration;
+    });
+
+
+    // time
+    function secToMinSec(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
+    function formatTime(s){
+        return secToMinSec(s).split(".").shift();
+    }
+    // total time
+    const totalTime = document.getElementById('total-time');
+    const currentTime = document.getElementById('current-time');
+
+    player.addEventListener('playing', () => {
+        totalTime.innerText = formatTime(player.duration);
+    });
+
+    // current time
+    player.addEventListener('timeupdate', () => {
+        currentTime.innerText = formatTime(player.currentTime);
+    });
+
+    
+
+</script>

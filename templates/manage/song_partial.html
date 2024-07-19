@@ -1,0 +1,35 @@
+<table class="edit-table">
+    <thead>
+      <th>Name</th>
+      <th>Artist</th>
+      <th>Album</th>
+      <th>Lyrics</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      {% for row in datas %}
+      <tr>
+        <td>{{row[1]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[9][:200]}}..</td>
+        <td>
+          {% set edit = '/manage/edit-song/' ~ row[0] %}
+          <a href={{edit}} class="btn btn-light"
+            >
+            <img src="/static/icons/edit-3.svg" alt="">
+            </a
+          >
+        </td>
+        <td>
+        {% set delete = '/manage/delete-song/' ~ row[0] %}
+          <a href={{delete}} class="btn btn-light"
+            ><img src="/static/icons/x-circle.svg" alt="">
+          </a>
+        </td>
+
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>

@@ -1,0 +1,45 @@
+{% extends "admin/layout.html" %} 
+{%block body%}
+<h3>Manage Users</h3>
+<table class="edit-table">
+    <thead>
+      <th>Name</th>
+      <th>Email</th>
+      <th>BlackList</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      {% for row in datas %}
+      <tr>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>
+        {% if row[3] == 0 %}
+          <a href='{{url_for("block_user",userID=row[0])}}' class="btn btn-light"
+            ><img src="/static/icons/slash.svg" alt="">
+            block
+          </a>
+        {% else %}
+            <a href='{{url_for("unblock_user",userID=row[0])}}' class="btn btn-light"
+                ><img src="/static/icons/check-circle.svg" alt="">
+                unblock
+            </a>
+        </td>
+        {% endif %}
+        <td>
+          <a href='{{url_for("delete_user",userID=row[0])}}' class="btn btn-light"
+            ><img src="/static/icons/trash.svg" alt="">
+            delete
+          </a>
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+
+  <style>
+    h3{
+        margin: 1rem 0;
+    }
+  </style>
+{%endblock%}

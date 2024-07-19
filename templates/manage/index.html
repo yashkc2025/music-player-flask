@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="manage-selection-menu">
+    <a href="/manage/songs">
+        <img src="/static/icons/disc.svg" alt="">
+        <p>Manage Songs</p>
+    </a>
+    <a href="/manage/albums">
+        <img src="/static/icons/book.svg" alt="">
+        <p>Manage Albums</p>
+    </a>
+    <a href="/edit-account">
+        <img src="/static/icons/user.svg" alt="">
+        <p>Manage Account</p>
+    </a>
+</div>
+
+<style>
+    .manage-selection-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+</style>
+{% endblock %}

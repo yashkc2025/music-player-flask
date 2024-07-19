@@ -1,0 +1,134 @@
+{% extends "admin/layout.html" %} 
+
+{% block head%}
+<link
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css"
+/>
+<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+{%endblock%} 
+
+
+
+{%block body%}
+    <div class="two-split">
+        <div class="top">
+            <div class="ct-chart"></div>
+            <div class="ct-stats">
+                <div class="top-stats">
+                    <div class="stat">
+                        <h3>Users</h3>
+                        <p>{{count.users}}</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Creators</h3>
+                        <p>{{count.creators}}</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Songs</h3>
+                        <p>{{count.songs}}</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Albums</h3>
+                        <p>{{count.albums}}</p>
+                    </div>
+                </div>
+                <div class="cat">
+                    <a class="cat" href="/admin/albums">Manage Albums</a>
+                    <a class="cat" href="/admin/users">Manage Users</a>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="hero">
+                <h3>Manage Songs</h3>
+                {%include "manage/song_partial.html"%}
+            </div>
+        </div>
+    </div>
+
+<style>
+    .cat{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .cat > a{
+        padding: 1rem 2rem;
+        background-color: black;
+        color: white;
+        border-radius: 15px;
+    }
+
+    .ct-stats{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 4rem;
+
+    }
+
+
+    h3{
+        margin: 2rem 0;
+    }
+
+    .two-split{
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        padding: 0 2rem;
+    }
+
+    .two-split > div{
+        min-height: 50vh;
+    }
+
+    .top{
+        display: flex;
+        gap: 10px;
+        flex-direction: row;
+    }
+
+    .top>div{
+        width: 50%;
+
+    }
+
+    .top-stats{
+        display: flex;
+        flex: row;
+        gap: 30px;
+        justify-content: start;
+    }
+
+
+
+    .ct-chart{
+        width: 50%;
+        height: 50vh;
+    }
+
+</style>
+
+{%endblock%}
+
+
+
+
+
+
+{%block script%}
+<script>
+    new Chartist.Bar('.ct-chart', {
+        labels: ['Users','Creators', 'Songs', 'Albums'],
+        series: [{{count.users}}, {{count.creators}}, {{count.songs}}, {{count.albums}}]
+      }, {
+        distributeSeries: true
+      });
+      
+      
+</script>
+{%endblock%}

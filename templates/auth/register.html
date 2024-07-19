@@ -1,0 +1,39 @@
+{%extends "auth/layout.html" %} {% from "includes/form.html" import formComp
+with context %} {%block content %}
+<div class="formDiv-Login">
+  {% call formComp("/auth/register", "POST", "Register") -%}
+  <div class="formGroup">
+    <label for="userEmail">Email</label> <input required name="userEmail" type="email" />
+  </div>
+  <div class="formGroup">
+    <label for="userPassword">Password</label>
+    <input name="userPassword" type="password"  required/>
+  </div>
+  <div class="formGroup">
+    <label for="userConfirmPassword">Confirm Password</label>
+    <input name="userConfirmPassword" type="password"  required/>
+  </div>
+  <div class="formGroup">
+    <label for="userName">Name</label>
+    <input name="userName" type="text"  required/>
+  </div>
+  {% endcall %}
+</div>
+
+<style>
+  .formDiv-Login {
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+</style>
+
+{%endblock content %}

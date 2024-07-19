@@ -1,0 +1,37 @@
+<nav class="navbar">
+  <div>
+    <a class="navbar-brand" href="/">Music App</a>
+  </div>
+  <div class="navbar-options">
+    <a href="/manage">Manage</a>
+    <a href="/auth/logout">Log out</a>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--padding);
+    background-color: var(--info-color);
+  }
+
+  .navbar-brand {
+    color: var(--light-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .navbar-options {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .navbar-options a {
+    color: var(--light-color);
+    text-decoration: none;
+  }
+</style>

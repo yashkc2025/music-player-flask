@@ -1,0 +1,26 @@
+{% extends 'manage/layout.html' %}
+{% from "includes/form.html" import formComp %}
+
+{% block content %}
+<form action="/switch-to-creator" method="post">
+    <h3>Become a Creator to upload and manage songs and albums</h3>
+    <button type="submit">Switch to Creator</button>
+</form>
+
+<style>
+    form{
+        text-align: center;
+    }
+
+    button{
+        margin-top: 20px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #1db954;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}

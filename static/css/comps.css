@@ -1,0 +1,67 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: var(--padding);
+  background-color: var(--info-color);
+}
+
+.navbar-brand {
+  color: var(--light-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-options {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.navbar-options a {
+  color: var(--light-color);
+  text-decoration: none;
+}
+
+.formDiv {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.w-min {
+  width: min-content;
+  white-space: nowrap;
+}
+
+img {
+  width: 15px;
+  height: 15px;
+}
+
+.audio-player {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  color: var(--textColor);
+  justify-content: space-between;
+
+  background-color: var(--lightColor);
+  padding: var(--mediumPadding) var(--largePadding);
+  border-radius: var(--mediumBR);
+
+  position: absolute;
+  bottom: 1vw;
+  left: 1vw;
+  width: 98vw;
+}
