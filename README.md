@@ -1,4 +1,4 @@
-# 🎵 Music Streaming App
+# 🎵 FlaskTunes
 
 A full-featured music streaming application that allows users to upload, listen to music, create playlists, and share them publicly.
 
@@ -161,4 +161,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-Made with ❤️ by Yash Kumar
+Made with ❤️ by Yash
